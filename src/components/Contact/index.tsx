@@ -1,6 +1,26 @@
-import NewsLatterBox from "./NewsLatterBox";
+import NewsLatterBox from "@/components/Contact/NewsLatterBox";
+import Select from "@/ui/Select/Select";
+import { SelectOption } from "@/uitypes/select";
 
 const Contact = () => {
+  const selectOption: SelectOption[] = [
+    {
+      label: "Select",
+      value: "",
+      className: "py-2 font-bold hover:bg-gray-100 dark:hover:bg-gray-700",
+    },
+    {
+      label: "Male",
+      value: "male",
+      className: "py-2 font-bold hover:bg-gray-100 dark:hover:bg-gray-700",
+    },
+    {
+      label: "Female",
+      value: "female",
+      className: "py-2 font-bold hover:bg-gray-100 dark:hover:bg-gray-700",
+    },
+  ];
+
   return (
     <section id="contact" className="overflow-hidden py-16 md:py-20 lg:py-28">
       <div className="container">
@@ -19,7 +39,8 @@ const Contact = () => {
               </p>
               <form>
                 <div className="-mx-4 flex flex-wrap">
-                  <div className="w-full px-4 md:w-1/2">
+                  <Select></Select>
+                  {/* <div className="w-full px-4 md:w-1/2">
                     <div className="mb-8">
                       <label
                         htmlFor="gender"
@@ -36,9 +57,9 @@ const Contact = () => {
                         <option value="female">Female</option>
                       </select>
                     </div>
-                  </div>
-
-                  <div className="w-full px-4 md:w-1/2">
+                  </div> */}
+                  <Select options={selectOption}></Select>
+                  {/* <div className="w-full px-4 md:w-1/2">
                     <div className="relative mb-8">
                       <label
                         htmlFor="gender"
@@ -70,7 +91,7 @@ const Contact = () => {
                         </option>
                       </select>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="mt-12 w-full px-4 md:w-1/2">
                     <div className="mb-8">
