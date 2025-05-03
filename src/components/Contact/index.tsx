@@ -1,10 +1,10 @@
 import NewsLatterBox from "@/components/Contact/NewsLatterBox";
 import Checkbox from "@/ui/Checkbox/Checkbox";
-import RadioGroup from "@/ui/RadioGroup/RadioGroup";
 import Select from "@/ui/Select/Select";
 import { SelectOption } from "@/ui/types";
 import HeadlessTextField from "../headlessui/Textfield/Textfield";
 import { useId } from "react";
+import HeadlessRadioGroup from "@/ui/RadioGroup/RadioGroup";
 
 const Contact = () => {
   const selectOption: SelectOption[] = [
@@ -97,7 +97,7 @@ const Contact = () => {
                     </div>
                   </div> */}
                   <Checkbox></Checkbox>
-                  <RadioGroup name="plan"></RadioGroup>
+                  <HeadlessRadioGroup></HeadlessRadioGroup>
                   {/* <div className="w-full px-4 md:w-1/2">
                     <div className="mb-8">
                       <p className="text-dark mb-3 block text-sm font-medium dark:text-white">
@@ -157,11 +157,12 @@ const Contact = () => {
                   </div> */}
                   <HeadlessTextField id={useId()} />
                   <HeadlessTextField
+                    disabled
                     floatingLabel
                     error="With the error"
                     id={useId()}
                   />
-                  <HeadlessTextField id={useId()} />
+                  <HeadlessTextField readOnly id={useId()} />
                   <HeadlessTextField
                     id={useId()}
                     floatingLabel

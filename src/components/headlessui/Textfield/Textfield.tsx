@@ -57,6 +57,11 @@ const HeadlessTextField: React.FC<TextFieldProps> = ({
   const labelDefaultClass =
     "text-dark mb-3 block text-sm font-medium dark:text-white";
 
+  const isDisabled = rest.disabled;
+  const isReadOnly = rest.readOnly;
+  const disabledClass = `cursor-not-allowed opacity-50 bg-gray-100 dark:bg-[#3a3f4b]`;
+  const readOnlyClass = `bg-gray-100 dark:bg-[#3a3f4b] text-gray-500 dark:text-gray-400 cursor-default`;
+
   return (
     <div className={wrapperClassName}>
       <Field>
@@ -76,7 +81,7 @@ const HeadlessTextField: React.FC<TextFieldProps> = ({
                 hasError
                   ? "border-red-500 text-red-600 focus:border-red-500 focus:ring-red-500"
                   : ""
-              }`}
+              } ${isDisabled ? disabledClass : ""} ${isReadOnly ? readOnlyClass : ""}`}
               {...rest}
               onChange={handleChange}
               value={internalValue}

@@ -1,14 +1,19 @@
-export interface Option {
-  label: string;
+import type { RadioGroupProps } from '@headlessui/react'
+
+export interface RadioOption {
   value: string;
+  label: string;
+  disabled?: boolean;
 }
 
-export interface RadioGroupProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  name: string;
+export interface RadioGroupComponentProps
+  extends Omit<RadioGroupProps, "children" | "className"> {
+  options?: RadioOption[];
   label?: string;
-  options?: Option[];
+  error?: string;
+  helperText?: string;
   wrapperClassName?: string;
-  groupClassName?: string;
   labelClassName?: string;
-  radioClassName?: string;
+  optionClassName?: string;
+  radioGroupClassName?: string;
 }
