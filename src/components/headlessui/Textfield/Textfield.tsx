@@ -5,7 +5,6 @@ import React, { useId } from "react";
 import { TextFieldProps } from "../types/textfield";
 
 const HeadlessTextField: React.FC<TextFieldProps> = ({
-  id: passedId,
   label = "Your Name",
   type = "text",
   name = "input",
@@ -21,10 +20,6 @@ const HeadlessTextField: React.FC<TextFieldProps> = ({
   const [internalValue, setInternalValue] = React.useState(
     rest.value ?? rest.defaultValue ?? "",
   );
-
-  const id = Boolean(passedId) ? passedId : useId();
-  const errorId = `${id}-error`;
-  const helperId = `${id}-helper`;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInternalValue(e.target.value);
@@ -61,72 +56,68 @@ const HeadlessTextField: React.FC<TextFieldProps> = ({
   const isReadOnly = rest.readOnly;
   const disabledClass = `cursor-not-allowed opacity-50 bg-gray-100 dark:bg-[#3a3f4b]`;
   const readOnlyClass = `bg-gray-100 dark:bg-[#3a3f4b] text-gray-500 dark:text-gray-400 cursor-default`;
+  const hasFloatingLabel = Boolean(floatingLabel) && Boolean(label);
 
   return (
-    <div className={wrapperClassName}>
-      <Field>
-        <div className="mb-8">
-          {/* Add the wrapper for floating label */}
-          <div className={floatingLabel ? floatingWrapperClass : ""}>
-            {/* Input Field */}
-            <Input
-              id={id}
-              type={type}
-              placeholder={floatingLabel ? " " : placeholder}
-              aria-invalid={hasError}
-              aria-describedby={
-                hasError ? errorId : helperText ? helperId : undefined
-              }
-              className={`peer pr-10 ${inputBaseClass} ${inputClassName ?? ""} ${
-                hasError
-                  ? "border-red-500 text-red-600 focus:border-red-500 focus:ring-red-500"
-                  : ""
-              } ${isDisabled ? disabledClass : ""} ${isReadOnly ? readOnlyClass : ""}`}
-              {...rest}
-              onChange={handleChange}
-              value={internalValue}
-            />
-            {/* Label - Floating or Default */}
-            {label && (
-              <Label
-                htmlFor={id}
-                className={`${
-                  floatingLabel ? labelFloatingClass : labelDefaultClass
-                } ${labelClassName ?? ""}`}
-              >
-                {label}
-              </Label>
-            )}
-
-            {/* Error Icon */}
-            {hasError && (
-              <ExclamationCircleIcon
-                className="pointer-events-none absolute top-1/2 right-3 h-5 w-5 -translate-y-1/2 text-red-500"
-                aria-hidden="true"
-              />
-            )}
-          </div>
-
-          {/* Helper Text / Error Message */}
-          {helperText && !hasError && (
-            <Description
-              id={helperId}
-              className="mt-2 text-sm text-gray-500 dark:text-gray-400"
+    <Field className={wrapperClassName}>
+      <div className="mb-8">
+        {/* Add the wrapper for floating label */}
+        <div className={floatingLabel ? floatingWrapperClass : ""}>
+          {!hasFloatingLabel && (
+            <Label
+              className={`${
+                floatingLabel ? labelFloatingClass : labelDefaultClass
+              } ${labelClassName ?? ""}`}
             >
-              {helperText}
-            </Description>
+              {label}
+            </Label>
           )}
-          {hasError && (
-            <Description
-              id={errorId}
-              className="mt-2 text-sm text-red-600 dark:text-red-400"
+          <Input
+            type={type}
+            placeholder={floatingLabel ? " " : placeholder}
+            aria-invalid={hasError}
+            className={`peer pr-10 ${inputBaseClass} ${inputClassName ?? ""} ${
+              hasError
+                ? "border-red-500 text-red-600 focus:border-red-500 focus:ring-red-500"
+                : ""
+            } ${isDisabled ? disabledClass : ""} ${isReadOnly ? readOnlyClass : ""}`}
+            {...rest}
+            onChange={handleChange}
+            value={internalValue}
+          />
+          {/* Label - Floating or Default */}
+          {hasFloatingLabel && (
+            <Label
+              className={`${
+                floatingLabel ? labelFloatingClass : labelDefaultClass
+              } ${labelClassName ?? ""}`}
             >
-              {error}
-            </Description>
+              {label}
+            </Label>
+          )}
+
+          {/* Error Icon */}
+          {hasError && (
+            <ExclamationCircleIcon
+              className="pointer-events-none absolute top-1/2 right-3 h-5 w-5 -translate-y-1/2 text-red-500"
+              aria-hidden="true"
+            />
           )}
         </div>
-      </Field>
-    </div>
+
+        {/* Helper Text / Error Message */}
+        {helperText && !hasError && (
+          <Description className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            {helperText}
+          </Description>
+        )}
+        {hasError && (
+          <Description className="mt-2 text-sm text-red-600 dark:text-red-400">
+            {error}
+          </Description>
+        )}
+      </div>
+    </Field>
   );
 };
 

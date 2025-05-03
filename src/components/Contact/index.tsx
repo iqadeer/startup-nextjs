@@ -169,6 +169,7 @@ const Contact = () => {
                     label="Email"
                     type="email"
                     helperText="We'll never share your email"
+                    error="This is an error"
                   />
                   <div className="w-full px-4">
                     <div className="mb-8">
