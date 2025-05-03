@@ -2,7 +2,7 @@
 import { Field, Input, Label, Description } from "@headlessui/react";
 import { ExclamationCircleIcon } from "@heroicons/react/20/solid";
 import React from "react";
-import { TextFieldProps } from "../types/textfield";
+import { TextFieldProps } from "@/ui/types";
 
 const HeadlessTextField: React.FC<TextFieldProps> = ({
   label = "Your Name",
