@@ -1,3 +1,4 @@
+"use client";
 import { Field, Input, Label, Description } from "@headlessui/react";
 import { ExclamationCircleIcon } from "@heroicons/react/20/solid";
 import React from "react";
@@ -7,6 +8,7 @@ const HeadlessTextField: React.FC<TextFieldProps> = ({
   id = "textfield",
   label = "Your Name",
   type = "text",
+  name = "input",
   placeholder = " ",
   error,
   helperText,
@@ -16,42 +18,48 @@ const HeadlessTextField: React.FC<TextFieldProps> = ({
   inputClassName,
   ...rest
 }) => {
+  const [internalValue, setInternalValue] = React.useState(
+    rest.value ?? rest.defaultValue ?? "",
+  );
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInternalValue(e.target.value);
+    rest.onChange?.(e); // keep the parent's onChange working
+  };
+
   const hasError = Boolean(error);
 
+  // Base input styles
   const inputBaseClass = `
-      border-stroke text-body-color focus:border-primary dark:text-body-color-dark dark:shadow-two
-      dark:focus:border-primary w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base outline-hidden
-      dark:border-transparent dark:bg-[#2C303B] dark:focus:shadow-none
-    `;
+    border-stroke text-body-color focus:border-primary dark:text-body-color-dark dark:shadow-two
+    dark:focus:border-primary w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base outline-hidden
+    dark:border-transparent dark:bg-[#2C303B] dark:focus:shadow-none
+  `;
 
+  // Wrapper class for floating label
   const floatingWrapperClass = "relative";
 
+  // Floating label styling
   const labelFloatingClass = `
-  absolute left-6 top-3 text-sm text-gray-500 dark:text-gray-400
-  transform 
-  peer-placeholder-shown:top-4 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
-  peer-focus:-translate-y-10 peer-focus:scale-100 peer-focus:translate-x-[-24px]
-  transition-all duration-300 ease-in-out origin-left pointer-events-none
-`;
+    absolute left-6 top-3 text-sm text-gray-500 dark:text-gray-400
+    transform
+    ${internalValue ? "-translate-y-10 scale-100 -translate-x-6 top-3" : "top-4"}
+    peer-placeholder-shown:top-4 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
+    peer-focus:-translate-y-10 peer-focus:scale-75 peer-focus:-translate-x-6
+    transition-all duration-300 ease-in-out origin-left pointer-events-none
+  `;
 
+  // Default label styling (above the input)
   const labelDefaultClass =
     "text-dark mb-3 block text-sm font-medium dark:text-white";
-
-  const showLableAtBottom = label && floatingLabel;
 
   return (
     <div className={wrapperClassName}>
       <Field>
         <div className="mb-8">
+          {/* Add the wrapper for floating label */}
           <div className={floatingLabel ? floatingWrapperClass : ""}>
-            {!showLableAtBottom && (
-              <Label
-                htmlFor={id}
-                className={`${floatingLabel ? labelFloatingClass : labelDefaultClass} ${labelClassName ?? ""}`}
-              >
-                {label}
-              </Label>
-            )}
+            {/* Input Field */}
             <Input
               id={id}
               type={type}
@@ -63,15 +71,22 @@ const HeadlessTextField: React.FC<TextFieldProps> = ({
                   : ""
               }`}
               {...rest}
+              onChange={handleChange}
+              value={internalValue}
             />
-            {showLableAtBottom && (
+            {/* Label - Floating or Default */}
+            {label && (
               <Label
                 htmlFor={id}
-                className={`${floatingLabel ? labelFloatingClass : labelDefaultClass} ${labelClassName ?? ""}`}
+                className={`${
+                  floatingLabel ? labelFloatingClass : labelDefaultClass
+                } ${labelClassName ?? ""}`}
               >
                 {label}
               </Label>
             )}
+
+            {/* Error Icon */}
             {hasError && (
               <ExclamationCircleIcon
                 className="pointer-events-none absolute top-1/2 right-3 h-5 w-5 -translate-y-1/2 text-red-500"
@@ -80,6 +95,7 @@ const HeadlessTextField: React.FC<TextFieldProps> = ({
             )}
           </div>
 
+          {/* Helper Text / Error Message */}
           {helperText && !hasError && (
             <Description className="mt-2 text-sm text-gray-500 dark:text-gray-400">
               {helperText}
