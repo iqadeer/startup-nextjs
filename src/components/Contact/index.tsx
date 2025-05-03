@@ -4,6 +4,7 @@ import RadioGroup from "@/ui/RadioGroup/RadioGroup";
 import Select from "@/ui/Select/Select";
 import { SelectOption } from "@/ui/types";
 import HeadlessTextField from "../headlessui/Textfield/Textfield";
+import { useId } from "react";
 
 const Contact = () => {
   const selectOption: SelectOption[] = [
@@ -154,10 +155,15 @@ const Contact = () => {
                       />
                     </div>
                   </div> */}
-                  <HeadlessTextField />
-                  <HeadlessTextField floatingLabel error="With the error" />
-                  <HeadlessTextField />
+                  <HeadlessTextField id={useId()} />
                   <HeadlessTextField
+                    floatingLabel
+                    error="With the error"
+                    id={useId()}
+                  />
+                  <HeadlessTextField id={useId()} />
+                  <HeadlessTextField
+                    id={useId()}
                     floatingLabel
                     label="Email"
                     type="email"

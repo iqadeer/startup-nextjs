@@ -1,11 +1,11 @@
 "use client";
 import { Field, Input, Label, Description } from "@headlessui/react";
 import { ExclamationCircleIcon } from "@heroicons/react/20/solid";
-import React from "react";
+import React, { useId } from "react";
 import { TextFieldProps } from "../types/textfield";
 
 const HeadlessTextField: React.FC<TextFieldProps> = ({
-  id = "textfield",
+  id: passedId,
   label = "Your Name",
   type = "text",
   name = "input",
@@ -21,6 +21,10 @@ const HeadlessTextField: React.FC<TextFieldProps> = ({
   const [internalValue, setInternalValue] = React.useState(
     rest.value ?? rest.defaultValue ?? "",
   );
+
+  const id = Boolean(passedId) ? passedId : useId();
+  const errorId = `${id}-error`;
+  const helperId = `${id}-helper`;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInternalValue(e.target.value);
@@ -65,6 +69,9 @@ const HeadlessTextField: React.FC<TextFieldProps> = ({
               type={type}
               placeholder={floatingLabel ? " " : placeholder}
               aria-invalid={hasError}
+              aria-describedby={
+                hasError ? errorId : helperText ? helperId : undefined
+              }
               className={`peer pr-10 ${inputBaseClass} ${inputClassName ?? ""} ${
                 hasError
                   ? "border-red-500 text-red-600 focus:border-red-500 focus:ring-red-500"
@@ -97,12 +104,18 @@ const HeadlessTextField: React.FC<TextFieldProps> = ({
 
           {/* Helper Text / Error Message */}
           {helperText && !hasError && (
-            <Description className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            <Description
+              id={helperId}
+              className="mt-2 text-sm text-gray-500 dark:text-gray-400"
+            >
               {helperText}
             </Description>
           )}
           {hasError && (
-            <Description className="mt-2 text-sm text-red-600 dark:text-red-400">
+            <Description
+              id={errorId}
+              className="mt-2 text-sm text-red-600 dark:text-red-400"
+            >
               {error}
             </Description>
           )}
