@@ -1,5 +1,5 @@
 import React from "react";
-import { SelectProps } from "@/uitypes/index";
+import { SelectProps } from "@/ui/types";
 const Select: React.FC<SelectProps> = ({
   id = "select",
   label = "Select an option",

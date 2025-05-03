@@ -1,5 +1,8 @@
 import NewsLatterBox from "@/components/Contact/NewsLatterBox";
+import Checkbox from "@/ui/Checkbox/Checkbox";
+import RadioGroup from "@/ui/RadioGroup/RadioGroup";
 import Select from "@/ui/Select/Select";
+import TextField from "@/ui/Textfield/Textfield";
 import { SelectOption } from "@/ui/types";
 
 const Contact = () => {
@@ -93,19 +96,9 @@ const Contact = () => {
                     </div>
                   </div> */}
 
-                  <div className="mt-12 w-full px-4 md:w-1/2">
-                    <div className="mb-8">
-                      <label className="text-dark flex items-center space-x-3 text-sm font-medium dark:text-white">
-                        <input
-                          type="checkbox"
-                          className="border-stroke text-primary focus:ring-primary dark:checked:bg-primary h-8 w-8 rounded bg-[#f8f8f8] focus:ring-2 dark:border-gray-600 dark:bg-[#2C303B]"
-                        />
-                        <span>Subscribe to newsletter</span>
-                      </label>
-                    </div>
-                  </div>
-
-                  <div className="w-full px-4 md:w-1/2">
+                  <Checkbox></Checkbox>
+                  <RadioGroup name="plan"></RadioGroup>
+                  {/* <div className="w-full px-4 md:w-1/2">
                     <div className="mb-8">
                       <p className="text-dark mb-3 block text-sm font-medium dark:text-white">
                         Choose Plan
@@ -131,9 +124,13 @@ const Contact = () => {
                         </label>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
-                  <div className="w-full px-4 md:w-1/2">
+                  <TextField></TextField>
+                  <TextField type="email"></TextField>
+                  <TextField type="password"></TextField>
+                  <TextField type="email" error="There is an error"></TextField>
+                  {/* <div className="w-full px-4 md:w-1/2">
                     <div className="mb-8">
                       <label
                         htmlFor="name"
@@ -147,8 +144,8 @@ const Contact = () => {
                         className="border-stroke text-body-color focus:border-primary dark:text-body-color-dark dark:shadow-two dark:focus:border-primary w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base outline-hidden dark:border-transparent dark:bg-[#2C303B] dark:focus:shadow-none"
                       />
                     </div>
-                  </div>
-                  <div className="w-full px-4 md:w-1/2">
+                  </div> */}
+                  {/* <div className="w-full px-4 md:w-1/2">
                     <div className="mb-8">
                       <label
                         htmlFor="email"
@@ -162,7 +159,7 @@ const Contact = () => {
                         className="border-stroke text-body-color focus:border-primary dark:text-body-color-dark dark:shadow-two dark:focus:border-primary w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base outline-hidden dark:border-transparent dark:bg-[#2C303B] dark:focus:shadow-none"
                       />
                     </div>
-                  </div>
+                  </div> */}
                   <div className="w-full px-4">
                     <div className="mb-8">
                       <label
