@@ -1,6 +1,6 @@
 import NewsLatterBox from "@/components/Contact/NewsLatterBox";
 import Select from "@/ui/Select/Select";
-import { SelectOption } from "@/uitypes/select";
+import { SelectOption } from "@/ui/types";
 
 const Contact = () => {
   const selectOption: SelectOption[] = [
