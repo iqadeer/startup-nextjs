@@ -18,7 +18,7 @@ const HeadlessRadioGroup: React.FC<RadioGroupComponentProps> = ({
     { value: "premium", label: "Premium" },
   ],
   label = "Choose Plan",
-  error,
+  helperText,
   wrapperClassName = "w-full px-4 md:w-1/2",
   labelClassName = "text-dark mb-3 block text-sm font-medium dark:text-white",
   optionClassName = "text-dark text-sm dark:text-white",
@@ -26,7 +26,7 @@ const HeadlessRadioGroup: React.FC<RadioGroupComponentProps> = ({
   value,
   ...rest
 }) => {
-  const hasError = Boolean(error);
+  const hasError = Boolean(helperText);
 
   const [selected, setSelected] = useState(value);
 
@@ -36,8 +36,8 @@ const HeadlessRadioGroup: React.FC<RadioGroupComponentProps> = ({
   };
 
   return (
-    <Fieldset className={`${wrapperClassName} mb-8`}>
-      <Legend className={labelClassName}>{label}</Legend>
+    <Fieldset className={wrapperClassName}>
+      <Legend className={`${labelClassName} mb-5`}>{label}</Legend>
       <RadioGroup
         className={radioGroupClassName}
         value={selected}
@@ -61,7 +61,7 @@ const HeadlessRadioGroup: React.FC<RadioGroupComponentProps> = ({
                           checked
                             ? "border-primary bg-primary"
                             : "border-stroke dark:border-gray-600 dark:bg-[#2C303B]"
-                        } ${error ? "border-red-500" : ""} ${
+                        } ${helperText ? "border-red-500" : ""} ${
                           radioDisabled
                             ? "cursor-not-allowed opacity-50"
                             : "group-focus:ring-primary/50 group-focus:ring-2"
@@ -85,7 +85,7 @@ const HeadlessRadioGroup: React.FC<RadioGroupComponentProps> = ({
                       // <div className="mt-2 flex items-center text-sm text-red-600 dark:text-red-400">
                       <Description className="mt-2 flex items-center text-sm text-red-600 dark:text-red-400">
                         <ExclamationCircleIcon className="mr-1 h-5 w-5" />
-                        {error}
+                        {helperText}
                       </Description>
                       // </div>
                     )}
