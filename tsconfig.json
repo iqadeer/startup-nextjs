@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@/ui/types/*": ["./src/components/ui/types/*"],
+      "@/headlessui/types/*": ["./src/components/headlessui/types/*"],
       "@/ui/*": ["./src/components/ui/*"],
       "@/components/*": ["./src/components/*"],
       "@/*": ["./src/*"]

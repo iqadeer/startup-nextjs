@@ -2,8 +2,8 @@ import NewsLatterBox from "@/components/Contact/NewsLatterBox";
 import Checkbox from "@/ui/Checkbox/Checkbox";
 import RadioGroup from "@/ui/RadioGroup/RadioGroup";
 import Select from "@/ui/Select/Select";
-import TextField from "@/ui/Textfield/Textfield";
 import { SelectOption } from "@/ui/types";
+import HeadlessTextField from "../headlessui/Textfield/Textfield";
 
 const Contact = () => {
   const selectOption: SelectOption[] = [
@@ -95,7 +95,6 @@ const Contact = () => {
                       </select>
                     </div>
                   </div> */}
-
                   <Checkbox></Checkbox>
                   <RadioGroup name="plan"></RadioGroup>
                   {/* <div className="w-full px-4 md:w-1/2">
@@ -125,11 +124,6 @@ const Contact = () => {
                       </div>
                     </div>
                   </div> */}
-
-                  <TextField></TextField>
-                  <TextField type="email"></TextField>
-                  <TextField type="password"></TextField>
-                  <TextField type="email" error="There is an error"></TextField>
                   {/* <div className="w-full px-4 md:w-1/2">
                     <div className="mb-8">
                       <label
@@ -160,6 +154,15 @@ const Contact = () => {
                       />
                     </div>
                   </div> */}
+                  <HeadlessTextField />
+                  <HeadlessTextField floatingLabel error="With the error" />
+                  <HeadlessTextField />
+                  <HeadlessTextField
+                    floatingLabel
+                    label="Email"
+                    type="email"
+                    helperText="We'll never share your email"
+                  />
                   <div className="w-full px-4">
                     <div className="mb-8">
                       <label
