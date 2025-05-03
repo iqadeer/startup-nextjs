@@ -2,7 +2,7 @@ import NewsLatterBox from "@/components/Contact/NewsLatterBox";
 import Checkbox from "@/ui/Checkbox/Checkbox";
 import Select from "@/ui/Select/Select";
 import { SelectOption } from "@/ui/types";
-import HeadlessTextField from "../headlessui/Textfield/Textfield";
+import HeadlessTextField from "../ui/Textfield/Textfield";
 import { useId } from "react";
 import RadioGroupComponent from "@/ui/RadioGroup/RadioGroupComponent";
 
@@ -159,7 +159,7 @@ const Contact = () => {
                   <HeadlessTextField
                     disabled
                     floatingLabel
-                    error="With the error"
+                    errorMessage="With the error"
                     id={useId()}
                   />
                   <HeadlessTextField readOnly id={useId()} />
@@ -169,7 +169,7 @@ const Contact = () => {
                     label="Email"
                     type="email"
                     helperText="We'll never share your email"
-                    error="This is an error"
+                    errorMessage="This is an error"
                   />
                   <div className="w-full px-4">
                     <div className="mb-8">

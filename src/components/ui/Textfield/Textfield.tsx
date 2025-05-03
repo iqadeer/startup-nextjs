@@ -9,7 +9,7 @@ const HeadlessTextField: React.FC<TextFieldProps> = ({
   type = "text",
   name = "input",
   placeholder = " ",
-  error,
+  errorMessage: error,
   helperText,
   floatingLabel = false,
   wrapperClassName = "w-full px-4 md:w-1/2",

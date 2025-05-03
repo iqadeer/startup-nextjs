@@ -1,9 +1,6 @@
 export interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  id?: string
   label?: string
-  name?: string
-  value?: ''
-  error?: string
+  errorMessage?: string
   helperText?: string
   wrapperClassName?: string
   labelClassName?: string
