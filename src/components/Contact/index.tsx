@@ -4,7 +4,7 @@ import Select from "@/ui/Select/Select";
 import { SelectOption } from "@/ui/types";
 import HeadlessTextField from "../headlessui/Textfield/Textfield";
 import { useId } from "react";
-import HeadlessRadioGroup from "@/ui/RadioGroup/RadioGroup";
+import RadioGroupComponent from "@/ui/RadioGroup/RadioGroupComponent";
 
 const Contact = () => {
   const selectOption: SelectOption[] = [
@@ -97,7 +97,7 @@ const Contact = () => {
                     </div>
                   </div> */}
                   <Checkbox></Checkbox>
-                  <HeadlessRadioGroup helperText="Invalid selection"></HeadlessRadioGroup>
+                  <RadioGroupComponent helperText="Invalid selection"></RadioGroupComponent>
                   {/* <div className="w-full px-4 md:w-1/2">
                     <div className="mb-8">
                       <p className="text-dark mb-3 block text-sm font-medium dark:text-white">
