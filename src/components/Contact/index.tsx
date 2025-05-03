@@ -97,7 +97,7 @@ const Contact = () => {
                     </div>
                   </div> */}
                   <Checkbox></Checkbox>
-                  <RadioGroupComponent helperText="Invalid selection"></RadioGroupComponent>
+                  <RadioGroupComponent errorMessage="Invalid selection"></RadioGroupComponent>
                   {/* <div className="w-full px-4 md:w-1/2">
                     <div className="mb-8">
                       <p className="text-dark mb-3 block text-sm font-medium dark:text-white">

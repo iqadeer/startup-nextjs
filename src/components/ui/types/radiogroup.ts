@@ -10,7 +10,7 @@ export interface RadioGroupComponentProps
   extends Omit<RadioGroupProps, "children" | "className"> {
   options?: RadioOption[];
   label?: string;
-  helperText?: string;
+  errorMessage?: string;
   wrapperClassName?: string;
   labelClassName?: string;
   optionClassName?: string;
