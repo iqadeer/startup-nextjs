@@ -1,9 +1,5 @@
-import { Button, ButtonProps } from "@headlessui/react";
-
-interface ButtonComponentProps extends ButtonProps {
-  wrapperClass?: string;
-  buttonClass?: string;
-}
+import { Button } from "@headlessui/react";
+import { ButtonComponentProps } from "@/ui/types";
 
 const ButtonComponent: React.FC<ButtonComponentProps> = ({
   children,
