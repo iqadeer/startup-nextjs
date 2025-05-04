@@ -99,3 +99,37 @@ const Select: React.FC<SelectProps> = ({
 export default Select;
 
 ```
+
+### Button component
+
+Crate a custom Button component from the code below using headless ui and tailwind css. Styling should be the same.
+
+- should support disabling
+- use Button component from headless ui. An example from headlessui is shown below.
+- Any custom prop interface should be extended from ButtonProps.
+
+  Code to convert
+
+```typescript
+      <div className="w-full px-4">
+        <button className="bg-primary shadow-submit hover:bg-primary/90 dark:shadow-submit-dark rounded-xs px-9 py-4 text-base font-medium text-white duration-300">
+          Submit Ticket
+        </button>
+      </div>
+
+```
+
+Headlessui code sample
+
+```typescript
+import { Button } from '@headlessui/react'
+
+export default function Example() {
+  return (
+    <Button className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-600 data-open:bg-gray-700">
+      Save changes
+    </Button>
+  )
+}
+
+```

@@ -6,6 +6,7 @@ import { useId } from "react";
 import RadioGroupComponent from "@/ui/RadioGroup/RadioGroupComponent";
 import TextareaComponent from "@/ui/Textarea/TextareaComponent";
 import SelectMultiple from "@/ui/Select/SelectMultiple";
+import ButtonComponent from "@/ui/Button/Button";
 
 const Contact = () => {
   return (
@@ -171,7 +172,8 @@ const Contact = () => {
                       ></textarea>
                     </div>
                   </div> */}
-                  <div className="w-full px-4">
+                  <ButtonComponent>Submit Ticket</ButtonComponent>
+                  <div className="my-8 px-4">
                     <button className="bg-primary shadow-submit hover:bg-primary/90 dark:shadow-submit-dark rounded-xs px-9 py-4 text-base font-medium text-white duration-300">
                       Submit Ticket
                     </button>
