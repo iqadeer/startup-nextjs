@@ -11,7 +11,7 @@ import {
 } from "@headlessui/react";
 import React, { useState } from "react";
 import clsx from "clsx";
-import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { OptionType, SelectComponentProps } from "@/ui/types";
 
 const SelectMultiple: React.FC<SelectComponentProps> = ({
@@ -72,7 +72,7 @@ const SelectMultiple: React.FC<SelectComponentProps> = ({
         >
           {selected.map((option) => option.label).join(", ")}
           <ChevronUpDownIcon
-            className="transition-transfor pointer-events-none absolute top-2 right-2 size-8 fill-black/60 group-data-open:rotate-180"
+            className="transition-transfor pointer-events-none absolute top-2 right-2 size-8 fill-black/60"
             aria-hidden="true"
           />
         </ListboxButton>
@@ -92,7 +92,7 @@ const SelectMultiple: React.FC<SelectComponentProps> = ({
               disabled={person.optionDisabled}
               className={({ focus, selected, disabled }) =>
                 clsx(
-                  "cursor-default rounded-sm px-4 py-2 select-none",
+                  "group flex cursor-default rounded-sm px-4 py-2 select-none",
                   {
                     "bg-blue-100 text-blue-900 dark:bg-blue-900/50": focus,
                     "font-semibold text-blue-600": selected,
@@ -103,6 +103,8 @@ const SelectMultiple: React.FC<SelectComponentProps> = ({
                 )
               }
             >
+              <CheckIcon className="invisible mr-2 size-5 fill-blue-600 group-data-selected:visible" />
+
               {person.label}
             </ListboxOption>
           ))}

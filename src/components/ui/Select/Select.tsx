@@ -11,7 +11,7 @@ import {
 } from "@headlessui/react";
 import React, { useState } from "react";
 import clsx from "clsx";
-import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { OptionType, SelectComponentProps } from "@/ui/types";
 
 const SelectComponent: React.FC<SelectComponentProps> = ({
@@ -91,7 +91,7 @@ const SelectComponent: React.FC<SelectComponentProps> = ({
               disabled={person.optionDisabled}
               className={({ focus, selected, disabled }) =>
                 clsx(
-                  "cursor-default rounded-sm px-4 py-2 select-none",
+                  "group flex cursor-default rounded-sm px-4 py-2 select-none",
                   {
                     "bg-blue-100 text-blue-900 dark:bg-blue-900/50": focus,
                     "font-semibold text-blue-600": selected,
@@ -102,6 +102,9 @@ const SelectComponent: React.FC<SelectComponentProps> = ({
                 )
               }
             >
+              <span>
+                <CheckIcon className="invisible mr-2 size-5 fill-blue-600 group-data-selected:visible" />
+              </span>
               {person.label}
             </ListboxOption>
           ))}
