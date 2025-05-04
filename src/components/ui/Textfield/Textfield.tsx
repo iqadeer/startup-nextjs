@@ -2,9 +2,9 @@
 import { Field, Input, Label, Description } from "@headlessui/react";
 import { ExclamationCircleIcon } from "@heroicons/react/20/solid";
 import React from "react";
-import { TextFieldProps } from "@/ui/types";
+import { TextfieldProps } from "@/ui/types";
 
-const HeadlessTextField: React.FC<TextFieldProps> = ({
+const Textfield: React.FC<TextfieldProps> = ({
   label = "Your Name",
   type = "text",
   name = "input",
@@ -121,4 +121,4 @@ const HeadlessTextField: React.FC<TextFieldProps> = ({
   );
 };
 
-export default HeadlessTextField;
+export default Textfield;

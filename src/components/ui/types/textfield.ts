@@ -1,4 +1,4 @@
-export interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface TextfieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string
   errorMessage?: string
   helperText?: string

@@ -1,10 +1,11 @@
 import NewsLatterBox from "@/components/Contact/NewsLatterBox";
-import Checkbox from "@/ui/Checkbox/Checkbox";
+import CheckboxComponent from "@/ui/Checkbox/Checkbox";
 import Select from "@/ui/Select/Select";
 import { SelectOption } from "@/ui/types";
-import HeadlessTextField from "../ui/Textfield/Textfield";
+import Textfield from "../ui/Textfield/Textfield";
 import { useId } from "react";
 import RadioGroupComponent from "@/ui/RadioGroup/RadioGroupComponent";
+import TextareaComponent from "@/ui/Textarea/TextareaComponent";
 
 const Contact = () => {
   const selectOption: SelectOption[] = [
@@ -96,7 +97,7 @@ const Contact = () => {
                       </select>
                     </div>
                   </div> */}
-                  <Checkbox></Checkbox>
+                  <CheckboxComponent></CheckboxComponent>
                   <RadioGroupComponent errorMessage="Invalid selection"></RadioGroupComponent>
                   {/* <div className="w-full px-4 md:w-1/2">
                     <div className="mb-8">
@@ -155,23 +156,23 @@ const Contact = () => {
                       />
                     </div>
                   </div> */}
-                  <HeadlessTextField id={useId()} />
-                  <HeadlessTextField
+                  <Textfield />
+                  <Textfield
                     disabled
                     floatingLabel
                     errorMessage="With the error"
                     id={useId()}
                   />
-                  <HeadlessTextField readOnly id={useId()} />
-                  <HeadlessTextField
-                    id={useId()}
+                  <Textfield readOnly />
+                  <Textfield
                     floatingLabel
                     label="Email"
                     type="email"
                     helperText="We'll never share your email"
                     errorMessage="This is an error"
                   />
-                  <div className="w-full px-4">
+                  <TextareaComponent rows={2}></TextareaComponent>
+                  {/* <div className="w-full px-4">
                     <div className="mb-8">
                       <label
                         htmlFor="message"
@@ -186,7 +187,7 @@ const Contact = () => {
                         className="border-stroke text-body-color focus:border-primary dark:text-body-color-dark dark:shadow-two dark:focus:border-primary w-full resize-none rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base outline-hidden dark:border-transparent dark:bg-[#2C303B] dark:focus:shadow-none"
                       ></textarea>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="w-full px-4">
                     <button className="bg-primary shadow-submit hover:bg-primary/90 dark:shadow-submit-dark rounded-xs px-9 py-4 text-base font-medium text-white duration-300">
                       Submit Ticket
