@@ -1,7 +1,6 @@
 import NewsLatterBox from "@/components/Contact/NewsLatterBox";
 import CheckboxComponent from "@/ui/Checkbox/Checkbox";
 import Select from "@/ui/Select/Select";
-import { SelectOption } from "@/ui/types";
 import Textfield from "../ui/Textfield/Textfield";
 import { useId } from "react";
 import RadioGroupComponent from "@/ui/RadioGroup/RadioGroupComponent";
@@ -9,24 +8,6 @@ import TextareaComponent from "@/ui/Textarea/TextareaComponent";
 import SelectMultiple from "@/ui/Select/SelectMultiple";
 
 const Contact = () => {
-  const selectOption: SelectOption[] = [
-    {
-      label: "Select",
-      value: "",
-      className: "py-2 font-bold hover:bg-gray-100 dark:hover:bg-gray-700",
-    },
-    {
-      label: "Male",
-      value: "male",
-      className: "py-2 font-bold hover:bg-gray-100 dark:hover:bg-gray-700",
-    },
-    {
-      label: "Female",
-      value: "female",
-      className: "py-2 font-bold hover:bg-gray-100 dark:hover:bg-gray-700",
-    },
-  ];
-
   return (
     <section id="contact" className="overflow-hidden py-16 md:py-20 lg:py-28">
       <div className="container">

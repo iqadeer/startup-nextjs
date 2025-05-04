@@ -8,30 +8,11 @@ import {
   ListboxButton,
   ListboxOption,
   ListboxOptions,
-  type ListboxProps,
-  type ListboxButtonProps,
-  type ListboxOptionProps,
-  type ListboxOptionsProps,
 } from "@headlessui/react";
 import React, { useState } from "react";
 import clsx from "clsx";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
-
-interface OptionType extends ListboxOptionProps<any> {
-  label: string;
-  value: string;
-  disabled?: boolean;
-  className?: string;
-}
-
-interface SelectComponentProps extends ListboxProps<any> {
-  errorMessage?: string;
-  wrapperClassName?: string;
-  labelClassName?: string;
-  selectClassName?: string;
-  buttonProps?: ListboxButtonProps<"button">;
-  optionsProps?: ListboxOptionsProps<"ul">;
-}
+import { OptionType, SelectComponentProps } from "@/ui/types";
 
 const SelectMultiple: React.FC<SelectComponentProps> = ({
   label = "Select an option",
