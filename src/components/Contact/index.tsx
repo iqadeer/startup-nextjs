@@ -6,6 +6,7 @@ import Textfield from "../ui/Textfield/Textfield";
 import { useId } from "react";
 import RadioGroupComponent from "@/ui/RadioGroup/RadioGroupComponent";
 import TextareaComponent from "@/ui/Textarea/TextareaComponent";
+import SelectMultiple from "@/ui/Select/SelectMultiple";
 
 const Contact = () => {
   const selectOption: SelectOption[] = [
@@ -45,6 +46,7 @@ const Contact = () => {
               <form>
                 <div className="-mx-4 flex flex-wrap">
                   <Select></Select>
+                  <SelectMultiple></SelectMultiple>
                   {/* <div className="w-full px-4 md:w-1/2">
                     <div className="mb-8">
                       <label

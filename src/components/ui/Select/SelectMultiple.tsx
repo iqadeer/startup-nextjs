@@ -33,21 +33,21 @@ interface SelectComponentProps extends ListboxProps<any> {
   optionsProps?: ListboxOptionsProps<"ul">;
 }
 
-const SelectComponent: React.FC<SelectComponentProps> = ({
+const SelectMultiple: React.FC<SelectComponentProps> = ({
   label = "Select an option",
   options = [
     {
+      id: 1,
       label: "Select a value",
       value: "",
       className: "",
       disabled: true,
-      id: 1,
     },
     {
+      id: 2,
       label: "Male",
       value: "male",
       className: "",
-      id: 2,
     },
     {
       id: 3,
@@ -65,13 +65,14 @@ const SelectComponent: React.FC<SelectComponentProps> = ({
   optionsProps,
   ...rest
 }) => {
-  const [selected, setSelected] = useState<OptionType>(options[0]);
+  const [selected, setSelected] = useState<OptionType[]>([options[0]]);
 
   const hasError = Boolean(errorMessage);
 
-  function handleChange(value: OptionType): void {
-    setSelected(value);
-  }
+  const handleChange = (options: OptionType[]): void => {
+    debugger;
+    setSelected(options);
+  };
 
   return (
     <Field
@@ -79,7 +80,7 @@ const SelectComponent: React.FC<SelectComponentProps> = ({
       disabled={disabled}
     >
       <Label className={labelClassName}>{label}</Label>
-      <Listbox value={selected} onChange={handleChange} {...rest}>
+      <Listbox value={selected} onChange={handleChange} {...rest} multiple>
         <ListboxButton
           {...buttonProps}
           className={clsx("relative w-full text-left", selectClassName, {
@@ -88,9 +89,9 @@ const SelectComponent: React.FC<SelectComponentProps> = ({
             "cursor-not-allowed opacity-50": disabled,
           })}
         >
-          {selected.label}
+          {selected.map((option) => option.label).join(", ")}
           <ChevronUpDownIcon
-            className="pointer-events-none absolute top-2 right-2 size-8 fill-black/60 transition-transform"
+            className="transition-transfor pointer-events-none absolute top-2 right-2 size-8 fill-black/60 group-data-open:rotate-180"
             aria-hidden="true"
           />
         </ListboxButton>
@@ -136,4 +137,4 @@ const SelectComponent: React.FC<SelectComponentProps> = ({
   );
 };
 
-export default SelectComponent;
+export default SelectMultiple;
